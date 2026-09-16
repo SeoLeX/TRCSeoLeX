@@ -1,18 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            background-image: url("background.png");
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-    </style>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRCS Topluluk Web Adresi</title>
+  <!-- Google Fonts: Bebas Neue (Başlıklar) & Inter (Genel metinler) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Harici CSS Dosyası Bağlantısı -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+  <!-- ÜST MENÜ (NAVBAR) -->
+  <header>
+    <div class="logo-container">
+      <a href="#" class="logo">
+                <img src="logo.svg" alt="Logo">
+            </a>
+    </div>
+    <nav>
+      <a href="#">EPLS24 Tahmin Ligi</a>
+      <a href="#">Oyunlar</a>
+      <a href="#" class="active">Kayıt Ol</a>
+      <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ANA İÇERİK (GRID YAPISI) -->
+  <main>
+    <div class="grid-container">
+      
+      <!-- SOL KOLON -->
+      <div class="col-left">
+        <h1 class="hero-title">TRCS Topluluk web adresine hoş geldin!</h1>
+        <ul class="features-list">
+          <li>CS2 turnuvalarına dair tahmin liglerine katıl.</li>
+          <li>İster tek, ister arkadaşlarınla mini oyunlar oyna.</li>
+          <li>Topluluğa dahil ol ve ödüller kazan.</li>
+        </ul>
+
+        <div class="section-box">
+          <h2 class="section-title">Tahmin Ligi</h2>
+          <div class="card-large"></div>
+          <div class="card-small"></div>
+        </div>
+      </div>
+
+      <!-- SAĞ KOLON -->
+      <div class="col-right">
+        <div class="form-header">
+          <h2 class="form-title">Hemen Kayıt Ol</h2>
+          <a href="#" class="form-toggle-link">veya Giriş Yap</a>
+        </div>
+
+        <form onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label for="email">E-POSTA</label>
+            <input type="email" id="email" class="form-input" placeholder="ornek@eposta.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="password">ŞİFRE</label>
+            <input type="password" id="password" class="form-input" placeholder="En az 6 karakter">
+          </div>
+        </form>
+
+        <div class="section-box">
+          <h2 class="section-title">Mini Oyunlar</h2>
+          <div class="card-small"></div>
+          <div class="card-small"></div>
+          <div class="card-small"></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
 </body>
 </html>
