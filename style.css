@@ -11,7 +11,7 @@ body {
   display: flex;
   flex-direction: column;
   
- /*arkaplan */
+  /* Dikey çizgili şerit ve koyu lacivert gradyan arka plan */
   background-color: #0b0d18;
   background-image: 
     repeating-linear-gradient(
@@ -23,7 +23,7 @@ body {
     ),
     radial-gradient(
       ellipse at top,
-      #131a38 15%,
+      #131a38 0%,
       #0b0d18 70%
     );
   background-attachment: fixed;
@@ -105,7 +105,7 @@ main {
 /* SOL KOLON */
 .hero-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 35px;
+  font-size: 36px;
   letter-spacing: 1px;
   margin-bottom: 14px;
   padding-bottom: 8px;
@@ -146,7 +146,7 @@ main {
   gap: 15px;
   border-bottom: 1px solid rgba(0, 102, 255, 0.4);
   padding-bottom: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .form-title {
@@ -168,7 +168,8 @@ main {
 }
 
 .form-group {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
+  position: relative;
 }
 
 .form-group label {
@@ -177,7 +178,7 @@ main {
   font-weight: 700;
   letter-spacing: 1px;
   color: #a0a6c0;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   text-transform: uppercase;
   text-align: center;
 }
@@ -204,6 +205,72 @@ main {
   box-shadow: 0 0 10px rgba(0, 102, 255, 0.3);
 }
 
+.form-input.input-error {
+  border-color: #ff4d4d;
+  box-shadow: 0 0 8px rgba(255, 77, 77, 0.3);
+}
+
+.error-text {
+  display: block;
+  font-size: 11px;
+  color: #ff4d4d;
+  text-align: center;
+  margin-top: 4px;
+  min-height: 15px;
+}
+
+/* BUTON */
+.submit-btn {
+  width: 100%;
+  padding: 13px;
+  margin-top: 8px;
+  background: linear-gradient(135deg, #0066ff 0%, #0044cc 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #1a75ff 0%, #0055ee 100%);
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* UYARI KUTUSU */
+.alert-message {
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.alert-message.success {
+  background-color: rgba(40, 167, 69, 0.2);
+  border: 1px solid #28a745;
+  color: #5dd879;
+}
+
+.alert-message.error {
+  background-color: rgba(220, 53, 69, 0.2);
+  border: 1px solid #dc3545;
+  color: #ff6b6b;
+}
+
+.hidden {
+  display: none !important;
+}
+
 /* KUTULAR / SEKSİYONLAR */
 .section-box {
   margin-top: 45px;
@@ -226,6 +293,10 @@ main {
   box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
+.logo img {
+    height: 36px;
+}
+
 .card-small {
   background-color: rgba(13, 16, 29, 0.6);
   border: 1px solid rgba(0, 102, 255, 0.4);
@@ -233,11 +304,6 @@ main {
   height: 60px;
   margin-bottom: 12px;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.logo img {
-  height: 40px;
-  display: block;
 }
 
 /* RESPONSIVE */

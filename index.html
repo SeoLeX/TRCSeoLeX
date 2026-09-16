@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TRCS Topluluk Web Adresi</title>
+  <title>TRCS Topluluk Web Adresi - Kayıt Ol / Giriş Yap</title>
   <!-- Google Fonts: Bebas Neue (Başlıklar) & Inter (Genel metinler) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Harici CSS Dosyası Bağlantısı -->
+  <!-- Harici CSS Dosyası -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,13 +17,13 @@
   <header>
     <div class="logo-container">
       <a href="#" class="logo">
-                <img src="logo.svg" alt="Logo">
-            </a>
+    <img src="logo.svg" alt="Logo">
+</a>
     </div>
     <nav>
       <a href="#">EPLS24 Tahmin Ligi</a>
       <a href="#">Oyunlar</a>
-      <a href="#" class="active">Kayıt Ol</a>
+      <a href="#" class="active" id="nav-auth-link">Kayıt Ol</a>
       <div class="hamburger-menu">
         <span></span>
         <span></span>
@@ -52,23 +52,29 @@
         </div>
       </div>
 
-      <!-- SAĞ KOLON -->
+      <!-- SAĞ KOLON (FORM) -->
       <div class="col-right">
         <div class="form-header">
-          <h2 class="form-title">Hemen Kayıt Ol</h2>
-          <a href="#" class="form-toggle-link">veya Giriş Yap</a>
+          <h2 class="form-title" id="form-title">Hemen Kayıt Ol</h2>
+          <a href="#" class="form-toggle-link" id="form-toggle-btn">veya Giriş Yap</a>
         </div>
 
-        <form onsubmit="event.preventDefault();">
+        <div id="alert-box" class="alert-message hidden"></div>
+
+        <form id="auth-form" novalidate>
           <div class="form-group">
             <label for="email">E-POSTA</label>
-            <input type="email" id="email" class="form-input" placeholder="ornek@eposta.com">
+            <input type="email" id="email" class="form-input" placeholder="ornek@eposta.com" required>
+            <span class="error-text" id="email-error"></span>
           </div>
           
           <div class="form-group">
             <label for="password">ŞİFRE</label>
-            <input type="password" id="password" class="form-input" placeholder="En az 6 karakter">
+            <input type="password" id="password" class="form-input" placeholder="En az 6 karakter" required>
+            <span class="error-text" id="password-error"></span>
           </div>
+
+          <button type="submit" class="submit-btn" id="submit-btn">KAYIT OL</button>
         </form>
 
         <div class="section-box">
@@ -82,5 +88,11 @@
     </div>
   </main>
 
+  <!-- JavaScript Dosyası -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+<script src="script.js"></script>
 </body>
 </html>
