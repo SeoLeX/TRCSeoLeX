@@ -1,4 +1,4 @@
-// 1. Firebase Yapılandırması (Kendi bilgilerinizle değiştirin)
+// 1. Firebase Yapılandırması
 const firebaseConfig = {
   apiKey: "AIzaSyAxUbaAXt7d-MM3R3YprBZkQDtp0vlIxVU",
   authDomain: "trcssite.firebaseapp.com",
@@ -13,6 +13,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
+
+// NOT: Otomatik yönlendirme engelini kaldırmak için buradaki onAuthStateChanged dinleyicisini sildik.
 
 document.addEventListener('DOMContentLoaded', () => {
   let isSignUpMode = true;
@@ -96,26 +98,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!isValid) return;
 
-    // Yükleniyor Durumu
     submitBtn.disabled = true;
     submitBtn.textContent = 'İşleniyor...';
 
     try {
       if (isSignUpMode) {
-        // 1. Firebase Auth ile Güvenli Kullanıcı Oluşturma
         const userCredential = await auth.createUserWithEmailAndPassword(emailVal, passwordVal);
         const user = userCredential.user;
 
-        // 2. Kullanıcı Bilgilerini Firestore Veritabanına Yazma (Şifre hariç, şifre Auth'ta güvenle tutulur)
         await db.collection('users').doc(user.uid).set({
           uid: user.uid,
           email: emailVal,
           createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
 
-        showAlert('Hesabınız başarıyla oluşturuldu!', 'success');
+        showAlert('Hesabınız başarıyla oluşturuldu! Yönlendiriliyorsunuz...', 'success');
       } else {
-        // Giriş Yapma İşlemi
         await auth.signInWithEmailAndPassword(emailVal, passwordVal);
         showAlert('Giriş başarılı! Yönlendiriliyorsunuz...', 'success');
       }
@@ -123,14 +121,19 @@ document.addEventListener('DOMContentLoaded', () => {
       emailInput.value = '';
       passwordInput.value = '';
 
+      // Yalnızca form başarıyla gönderilince yönlendirir
+      setTimeout(() => {
+        window.location.href = 'main.html';
+      }, 1000);
+
     } catch (error) {
-      // Profesyonel Hata Yönetimi
       let message = 'Bir hata oluştu.';
       if (error.code === 'auth/email-already-in-use') message = 'Bu e-posta adresi zaten kullanımda.';
-      if (error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') message = 'E-posta veya şifre hatalı.';
+      if (error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
+        message = 'E-posta veya şifre hatalı.';
+      }
       
       showAlert(message, 'error');
-    } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = isSignUpMode ? 'KAYIT OL' : 'GİRİŞ YAP';
     }
